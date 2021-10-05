@@ -1,6 +1,6 @@
-name: POI CICD​
-​
-env:​
+name: POI CICD
+
+env:
   poi_path: apis/poi/**​
   registry: docker.pkg.github.com​
   repository: hattan/openhack-devops-team-gh/api-poi​
