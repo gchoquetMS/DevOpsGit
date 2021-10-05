@@ -1,10 +1,10 @@
-name: POI CICD
+name: POI CICD​
 
+​
 
+env:​
 
-env:
-
-  poi_path: apis/poi/**
+  poi_path: apis/poi/**​
 
   registry: docker.pkg.github.com​
 
