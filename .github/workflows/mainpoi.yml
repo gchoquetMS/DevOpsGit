@@ -7,8 +7,8 @@ env:
   docker_path: apis/poi/web​
   staging_url: https://openhackbx30ror2poi-staging.azurewebsites.net/​
   prod_url: https://openhackbx30ror2poi.azurewebsites.net/​
-  resource_group: openhackxv61mxh2rg​
-  webapp_name: openhackxv61mxh2poi​
+  resource_group: openhackbx30ror2rgg​
+  webapp_name: openhackbx30ror2poi​
   build_name: POI​
 
 on:
