@@ -7,7 +7,7 @@ push:
   - apis/poi/**
   - .github/workflows/POI-CD.yml
   
-# Variables used in the jobs
+# Variables used in the jobs2
 env:
 registry: openhackbx30ror2acr.azurecr.io
 repository: devopsoh/api-poi
