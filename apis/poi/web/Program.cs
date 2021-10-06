@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;  **this is a bad change GC**
+﻿using Microsoft.AspNetCore.Hosting;  **this is a bad change2 GC**
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
