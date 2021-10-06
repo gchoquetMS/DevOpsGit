@@ -1,0 +1,57 @@
+name:
+ POI-CD
+on:
+push:
+  branches:[master, ch4]
+  paths:
+  - apis/poi/**
+  - .github/workflows/POI-CD.yml
+  
+# Variables used in the jobs
+env:
+registry: openhackbx30ror2acr.azurecr.io
+repository: devopsoh/api-poi
+docker_path: apis/poi/web
+webapp_name: openhackbx30ror2poi
+
+jobs:
+docker_build_and_push:
+  runs-on: ubuntu-latest
+  steps:
+  - uses: actions/checkout@v2
+  
+  - name: Docker login
+      run: docker login $registry -u ${{ secrets.ACR_USER }} -p ${{ secrets.ACR_KEY }}
+
+  - name: Docker build
+      run: docker build -t $registry/$repository:${{github.run_number}} --build-arg build_version=${{github.run_number}} $docker_path
+
+  - name: Docker Push
+      run: docker push $registry/$repository:${{github.run_number}}
+
+  - uses: nashmaniac/create-issue-action@v1.1
+      if: failure()
+      name: Create Issue Action
+      with: title: Build Failed
+      token: ${{secrets.GITHUB_TOKEN}}
+      assignees: ${{github.actor}}
+      labels: workflow-failed
+
+      body:|
+            ${{ github.workflow }} Workflow failed for commit ${{github.sha}}
+            Build Log: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+simple_deploy:
+    runs-on: ubuntu-latest
+    needs: docker_build_and_push
+    steps:
+    - name: Azure authentication
+        uses: azure/login@v1
+        with:
+        creds: ${{ secrets.AZURE_CREDENTIALS  }}
+    
+    - name: Azure WebApp
+        uses: Azure/webapps-deploy@v2
+        with:     
+        app-name: ${{ env.webapp_name }}
+        images: ${{ env.registry }}/${{ env.repository }}:${{github.run_number}}
