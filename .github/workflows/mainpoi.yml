@@ -1,15 +1,15 @@
 name: POI CICD
 
 env:
-  poi_path: apis/poi/**​
-  registry: docker.pkg.github.com​
-  repository: hattan/openhack-devops-team-gh/api-poi​
-  docker_path: apis/poi/web​
-  staging_url: https://openhackbx30ror2poi-staging.azurewebsites.net/​
-  prod_url: https://openhackbx30ror2poi.azurewebsites.net/​
-  resource_group: openhackbx30ror2rgg​
-  webapp_name: openhackbx30ror2poi​
-  build_name: POI​
+  poi_path: apis/poi/**
+  registry: docker.pkg.github.com
+  repository: hattan/openhack-devops-team-gh/api-poi
+  docker_path: apis/poi/web
+  staging_url: https://openhackbx30ror2poi-staging.azurewebsites.net/
+  prod_url: https://openhackbx30ror2poi.azurewebsites.net/
+  resource_group: openhackbx30ror2rgg
+  webapp_name: openhackbx30ror2poi
+  build_name: POI
 
 on:
   push:
